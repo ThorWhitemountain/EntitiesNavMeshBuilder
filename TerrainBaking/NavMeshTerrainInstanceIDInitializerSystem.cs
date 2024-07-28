@@ -2,7 +2,9 @@
 using EntitiesNavMeshBuilder.Systems;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
+using Unity.Physics;
 using Unity.Transforms;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace TerrainBaking
@@ -43,8 +45,8 @@ namespace TerrainBaking
                 };
                 id.shape = NavMeshBuildSourceShape.Terrain;
 
-                link.Companion.transform.SetLocalPositionAndRotation(lt.Position, lt.Rotation);
-                link.Companion.transform.localScale = new(lt.Scale, lt.Scale, lt.Scale);
+                link.Companion.Value.transform.SetLocalPositionAndRotation(lt.Position, lt.Rotation);
+                link.Companion.Value.transform.localScale = new Vector3(lt.Scale, lt.Scale, lt.Scale);
 
                 ltwRef.ValueRW.Value = lt.ToMatrix();
             }
