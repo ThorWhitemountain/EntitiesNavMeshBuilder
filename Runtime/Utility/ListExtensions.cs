@@ -18,8 +18,8 @@ namespace EntitiesNavMeshBuilder.Utility
                 return;
             }
 
-            var index = list.Count;
-            var newLength = index + length;
+            int index = list.Count;
+            int newLength = index + length;
 
             // Resize our list if we require
             if (list.Capacity < newLength)
@@ -27,12 +27,12 @@ namespace EntitiesNavMeshBuilder.Utility
                 list.Capacity = newLength;
             }
 
-            var items = NoAllocHelpers.ExtractArrayFromListT(list);
-            var size = UnsafeUtility.SizeOf<T>();
+            T[] items = NoAllocHelpers.ExtractArrayFromList(list);
+            int size = UnsafeUtility.SizeOf<T>();
 
             // Get the pointer to the end of the list
-            var bufferStart = (IntPtr)UnsafeUtility.AddressOf(ref items[0]);
-            var buffer = (byte*)(bufferStart + size * index);
+            IntPtr bufferStart = (IntPtr)UnsafeUtility.AddressOf(ref items[0]);
+            byte* buffer = (byte*)(bufferStart + size * index);
 
             UnsafeUtility.MemCpy(buffer, arrayBuffer, length * (long)size);
 
