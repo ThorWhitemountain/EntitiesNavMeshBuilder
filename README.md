@@ -1,3 +1,8 @@
+# UNUSED
+
+Will replaced by my own navmesh baking package at some point. 
+
+
 # EntitiesNavMeshBuilder
 
 Fork made for use in [Scorching Engines](https://store.steampowered.com/app/2640660/Scorching_Engines/)
